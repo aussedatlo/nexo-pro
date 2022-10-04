@@ -68,7 +68,8 @@ export default class Client {
     if (method === 'GET' || method === 'DELETE') {
       requestConfig.params = params;
     } else {
-      requestConfig.data = params; // need serialization
+      requestConfig.json = true;
+      requestConfig.data = params;
     }
 
     return axios(requestConfig)
