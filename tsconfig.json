@@ -13,7 +13,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "esModuleInterop": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["es2021", "dom"],
     "baseUrl": ".",
     "outDir": "lib"
   },
