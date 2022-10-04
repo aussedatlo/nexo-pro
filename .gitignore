@@ -1,0 +1,10 @@
+.vscode/
+.idea/
+.nyc_output/
+node_modules/
+util/config.js
+coverage/
+yarn-error.log
+lib/*
+*.tgz
+.env

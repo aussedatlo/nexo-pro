@@ -1,0 +1,76 @@
+{
+  "name": "nexo-pro",
+  "version": "0.1.0",
+  "description": "Node.js connector for Nexo Pro's REST APIs, with TypeScript & integration tests.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/*",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "clean": "rimraf lib dist",
+    "build": "tsc",
+    "build:clean": "yarn run clean && yarn run build",
+    "build:watch": "yarn run clean && tsc --watch",
+    "pack": "webpack --config webpack/webpack.config.js",
+    "prepublishOnly": "yarn run build:clean",
+    "betapublish": "yarn publish --tag beta",
+    "prettier": "prettier --check '**/*.ts*'",
+    "prettier-write": "prettier --check --write '**/*.ts*'"
+  },
+  "author": "Louis Aussedat (https://github.com/aussedatlo)",
+  "contributors": [],
+  "dependencies": {
+    "axios": "^0.21.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^14.14.7",
+    "dotenv": "^16.0.3",
+    "eslint": "^7.10.0",
+    "jest": "^27.0.4",
+    "prettier": "^2.7.1",
+    "source-map-loader": "^2.0.0",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^8.0.11",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.0.5",
+    "webpack": "^5.4.0",
+    "webpack-bundle-analyzer": "^4.1.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "keywords": [
+    "nexo pro",
+    "nexo pro api",
+    "nexo pro futures api",
+    "nexo pro spot api",
+    "nexo pro margin api",
+    "api",
+    "rest",
+    "rest api",
+    "usdt",
+    "trading bots",
+    "nodejs",
+    "node",
+    "trading",
+    "cryptocurrency",
+    "bitcoin",
+    "best"
+  ],
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/aussedatlo"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aussedatlo/nexo-pro"
+  },
+  "bugs": {
+    "url": "https://github.com/aussedatlo/nexo-pro/issues"
+  },
+  "homepage": "https://github.com/aussedatlo/nexo-pro#readme"
+}
