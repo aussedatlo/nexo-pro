@@ -72,7 +72,7 @@ export class Client {
       });
       requestConfig.params = p;
     } else {
-      requestConfig.data = params; // need serialization
+      requestConfig.data = params;
     }
 
     return axios(requestConfig)
