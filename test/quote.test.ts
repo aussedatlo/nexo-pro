@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import Client from '../src/client';
+import { Client } from '../src/client';
 import { PairsResponse, QuoteParams, QuoteResponse } from '../src/types/client';
 
 describe('Quote Endpoint', () => {

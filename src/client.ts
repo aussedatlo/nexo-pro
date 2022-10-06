@@ -25,7 +25,7 @@ import { getSignature } from './utils/rest';
 
 type GenericAPIResponse<T = any> = Promise<T>;
 
-export default class Client {
+export class Client {
   private key: string;
   private secret: string;
   private baseUrl: string = BASE_URL_VERSION_API_V1;

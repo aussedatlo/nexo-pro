@@ -52,7 +52,7 @@ Create API credential at Nexo Pro API Management
 ## :label: REST API Client
 
 ```typescript
-import Client from '../src/client';
+import { Client } from 'nexo-pro';
 
 const client = new Client({
   api_key: key,
