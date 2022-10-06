@@ -66,7 +66,11 @@ export class Client {
     };
 
     if (method === 'GET' || method === 'DELETE') {
-      requestConfig.params = params;
+      let p = new URLSearchParams();
+      Object.keys(params || {}).forEach((value: string) => {
+        p.append(value, params[value]);
+      });
+      requestConfig.params = p;
     } else {
       requestConfig.data = params; // need serialization
     }
