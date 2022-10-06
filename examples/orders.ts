@@ -13,7 +13,7 @@ const client = new Client({
 
 (async () => {
   try {
-    const order: OrderResponse = await client.setOrder({
+    const order: OrderResponse = await client.placeOrder({
       pair: 'BTC/USDC',
       side: 'buy',
       type: 'market',

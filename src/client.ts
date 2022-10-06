@@ -114,23 +114,23 @@ export class Client {
     return this.get('quote', params);
   }
 
-  public setOrder(params: OrderParams): Promise<OrderResponse> {
+  public placeOrder(params: OrderParams): Promise<OrderResponse> {
     return this.post('orders', params);
   }
 
-  public setTriggerOrder(
+  public placeTriggerOrder(
     params: TriggerOrderParams
   ): Promise<TriggerOrderResponse> {
     return this.post('orders/trigger', params);
   }
 
-  public setAdvancedOrder(
+  public placeAdvancedOrder(
     params: TriggerOrderParams
   ): Promise<TriggerOrderResponse> {
     return this.post('orders/advanced', params);
   }
 
-  public setTWAPOrder(params: TWAPOrderParams): Promise<TWAPOrderResponse> {
+  public placeTWAPOrder(params: TWAPOrderParams): Promise<TWAPOrderResponse> {
     return this.post('orders/twap', params);
   }
 
@@ -138,7 +138,7 @@ export class Client {
     return this.get('orders', params);
   }
 
-  public getSpecificOrder(
+  public getOrderDetails(
     params: SpecificOrderParams
   ): Promise<SpecificOrderResponse> {
     return this.get('orderDetails', params);
