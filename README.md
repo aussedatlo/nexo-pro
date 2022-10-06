@@ -36,7 +36,7 @@ copy the `.env.template` file in `.env` and fills the variables.
 run an example using `ts-node`:
 
 ```shell
-ts-node examples/client.ts
+ts-node examples/account.ts
 ```
 
 ## :open_book: Documentation
