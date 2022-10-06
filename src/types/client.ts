@@ -54,6 +54,18 @@ export interface OrderResponse {
   orderId: string;
 }
 
+export interface CancelOrderParams {
+  orderId: string;
+}
+
+export interface CancelOrderResponse {}
+
+export interface CancelAllOrdersParams {
+  pair: string;
+}
+
+export interface CancelAllOrdersResponse {}
+
 export interface TriggerOrderParams {
   pair: string;
   side: Side;

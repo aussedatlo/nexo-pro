@@ -20,6 +20,10 @@ import {
   TradesResponse,
   TransactionParams,
   TransactionResponse,
+  CancelOrderParams,
+  CancelOrderResponse,
+  CancelAllOrdersParams,
+  CancelAllOrdersResponse,
 } from './types/client';
 import { getSignature } from './utils/rest';
 
@@ -116,6 +120,16 @@ export class Client {
 
   public placeOrder(params: OrderParams): Promise<OrderResponse> {
     return this.post('orders', params);
+  }
+
+  public cancelOrder(params: CancelOrderParams): Promise<CancelOrderResponse> {
+    return this.post('orders/cancel', params);
+  }
+
+  public cancelAllOrders(
+    params: CancelAllOrdersParams
+  ): Promise<CancelAllOrdersResponse> {
+    return this.post('orders/cancel/all', params);
   }
 
   public placeTriggerOrder(
