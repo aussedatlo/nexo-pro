@@ -34,6 +34,9 @@ export type Type = 'market' | 'limit';
 export type TriggerType = 'stopLoss' | 'takeProfit' | 'trailing';
 export type Status = 'completed';
 export type TransactionType = 'deposit' | 'withdraw';
+export type FuturesStatus = 'any' | 'active' | 'inactive';
+export type FuturesSide = 'long' | 'short';
+export type FuturesAction = 'open' | 'close';
 
 export interface QuoteParams {
   pair: string;
@@ -189,4 +192,50 @@ export interface TransactionResponse {
   amount: number;
   type: TransactionType;
   status: Status;
+}
+
+export interface Instrument {
+  name: string;
+  pricePrecision: number;
+  amountPrecision: number;
+}
+
+export interface FuturesInstrumentsResponse {
+  instruments: Array<Instrument>;
+}
+
+export interface FuturesPositionsParams {
+  status: FuturesStatus;
+}
+
+export interface Position {
+  id: number;
+  instrument: string;
+  side: string;
+  amount: number;
+  entryPrice: number;
+  markPrice: number;
+  liquidationPrice: number;
+  unrealizedPnl: number;
+  lockedCollateral: number;
+  leverage: number;
+  created: string;
+  updated: string;
+  isPositionActive: boolean;
+}
+
+export interface FuturesPositionResponse {
+  positions: Array<Position>;
+}
+
+export interface FuturesOrderParams {
+  instrument: string;
+  positionAction: FuturesAction;
+  positionSide: FuturesSide;
+  type: 'market';
+  quantity: number;
+}
+
+export interface FuturesOrderResponse {
+  id: string;
 }

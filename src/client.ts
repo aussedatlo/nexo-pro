@@ -24,6 +24,11 @@ import {
   CancelOrderResponse,
   CancelAllOrdersParams,
   CancelAllOrdersResponse,
+  FuturesPositionsParams,
+  FuturesPositionResponse,
+  FuturesInstrumentsResponse,
+  FuturesOrderParams,
+  FuturesOrderResponse,
 } from './types/client';
 import { getSignature } from './utils/rest';
 
@@ -166,5 +171,21 @@ export class Client {
     params: TransactionParams
   ): Promise<TransactionResponse> {
     return this.get('transaction', params);
+  }
+
+  public getFuturesInstruments(): Promise<FuturesInstrumentsResponse> {
+    return this.get('futures/instruments');
+  }
+
+  public getFuturesPosition(
+    params: FuturesPositionsParams
+  ): Promise<FuturesPositionResponse> {
+    return this.get('futures/positions', params);
+  }
+
+  public placeFuturesOrder(
+    params: FuturesOrderParams
+  ): Promise<FuturesOrderResponse> {
+    return this.post('futures/order', params);
   }
 }
