@@ -51,7 +51,7 @@ export interface OrderParams {
 }
 
 export interface OrderResponse {
-  id: string;
+  orderId: string;
 }
 
 export interface TriggerOrderParams {
