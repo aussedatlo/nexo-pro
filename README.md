@@ -59,8 +59,72 @@ const client = new Client({
   api_secret: secret,
 });
 
-const accountSummary = await client.getAccountSummary();
-console.log(accountSummary);
+// infos
+await client.getAccountSummary();
+await client.getPairs();
+await client.getQuote({ pair: 'BTC/USDT', amount: 10, side: 'buy' });
+
+// orders
+await client.placeOrder({
+  pair: 'BTC/USDT',
+  side: 'buy',
+  type: 'market',
+  quantity: 0.02,
+});
+await client.cancelOrder({ orderId: '<order_id>' });
+await client.cancelAllOrders({ pair: 'BTC/USDT' });
+await client.placeTriggerOrder({
+  pair: 'BTC/USDT',
+  side: 'buy',
+  triggerType: 'stopLoss',
+  amount: 0.02,
+  triggerPrice: 18000,
+});
+
+await client.placeAdvancedOrder({
+  pair: 'BTC/USDT',
+  side: 'buy',
+  triggerType: 'stopLoss',
+  amount: 0.02,
+  triggerPrice: 18000,
+});
+await client.placeTWAPOrder({
+  pair: 'BTC/USDT',
+  quantity: 0.02,
+  side: 'buy',
+  exchanges: [''],
+  split: 10,
+  executionInterval: 200,
+});
+await client.getOrders({
+  pairs: ['BTC/USDT'],
+  startDate: 0,
+  endDate: Date.now(),
+  pageNum: 0,
+  pageSize: 5,
+});
+await client.getOrderDetails({ id: '<order_id>' });
+
+// others
+await client.getTrades({
+  pairs: ['BTC/USDT'],
+  startDate: 0,
+  endDate: Date.now(),
+  pageNum: 0,
+  pageSize: 5,
+});
+await client.getTransaction({ transactionId: 0 });
+
+// futures
+await client.getFuturesInstruments();
+await client.getFuturesPosition({ status: 'active' });
+await client.placeFuturesOrder({
+  instrument: 'BTC/USDT',
+  positionAction: 'open',
+  positionSide: 'long',
+  type: 'market',
+  quantity: 0.02,
+});
 ```
 
 ## :test_tube: Tests
