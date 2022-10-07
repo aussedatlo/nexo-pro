@@ -1,6 +1,6 @@
 {
   "name": "nexo-pro",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js connector for Nexo Pro's REST APIs, with TypeScript & integration tests.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
