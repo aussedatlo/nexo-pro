@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
-import { Client } from '../src/client';
-import { PairsResponse, QuoteParams, QuoteResponse } from '../src/types/client';
+import Client from '../src/client';
+import { QuoteParams, QuoteResponse } from '../src/types/client';
 
 describe('Quote Endpoint', () => {
   config();
@@ -9,7 +9,7 @@ describe('Quote Endpoint', () => {
 
   const pair = 'BTC/USDT';
 
-  const client = new Client({
+  const client = Client({
     api_key: key,
     api_secret: secret,
   });

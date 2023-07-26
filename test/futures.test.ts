@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { Client } from '../src/client';
+import Client from '../src/client';
 import { Instrument, Position } from '../src/types/client';
 
 describe('Pairs Endpoint', () => {
@@ -7,7 +7,7 @@ describe('Pairs Endpoint', () => {
   const key = process.env.APIKEY || 'APIKEY';
   const secret = process.env.APISECRET || 'APISECRET';
 
-  const client = new Client({
+  const client = Client({
     api_key: key,
     api_secret: secret,
   });
