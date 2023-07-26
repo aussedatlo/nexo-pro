@@ -210,9 +210,9 @@ export type OrderTrade = {
   id: string;
   symbol: string;
   type: Type;
-  orderAmount: number;
-  amountFilled: number;
-  executedPrice: number;
+  orderAmount: string;
+  amountFilled: string;
+  executedPrice: string;
   timestamp: number;
   status: Status;
 };
@@ -222,9 +222,9 @@ export type SpecificOrderResponse = {
   side: Side;
   pair: string;
   timestamp: number;
-  quantity: number;
-  exchangeRate: number;
-  executedQuantity: number;
+  quantity: string;
+  exchangeRate: string;
+  executedQuantity: string;
   trades: Array<OrderTrade>;
 };
 
