@@ -39,7 +39,7 @@ const Client = ({
     },
   };
 
-  const call = (
+  const call = async (
     method: Method,
     endpoint: string,
     params?: any
@@ -69,15 +69,7 @@ const Client = ({
       requestConfig.data = params;
     }
 
-    return axios(requestConfig)
-      .then((response) => {
-        if (response.status == 200) {
-          return response.data;
-        }
-
-        throw response;
-      })
-      .catch((e) => console.error(e));
+    return (await axios(requestConfig)).data;
   };
 
   const get = (endpoint: string, params?: any): GenericAPIResponse => {
