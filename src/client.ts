@@ -1,40 +1,33 @@
 import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 import { BASE_URL_VERSION_API_V1 } from './constant/api';
 import {
-  AccountSummaryResponse,
-  OrdersParams,
-  OrdersResponse,
-  OrderParams,
-  OrderResponse,
-  PairsResponse,
-  QuoteParams,
-  QuoteResponse,
-  RestClientOptions,
-  SpecificOrderParams,
-  SpecificOrderResponse,
-  TriggerOrderParams,
-  TriggerOrderResponse,
-  TWAPOrderParams,
-  TWAPOrderResponse,
-  TradesParams,
-  TradesResponse,
-  TransactionParams,
-  TransactionResponse,
-  CancelOrderParams,
-  CancelOrderResponse,
-  CancelAllOrdersParams,
-  CancelAllOrdersResponse,
-  FuturesPositionsParams,
-  FuturesPositionResponse,
-  FuturesInstrumentsResponse,
-  FuturesOrderParams,
-  FuturesOrderResponse,
+  CancelAllOrdersFn,
+  CancelOrderFn,
+  GetAccountSummaryFn,
+  GetFuturesInstrumentsFn,
+  GetFuturesPositionFn,
+  GetOrderDetailsFn,
+  GetOrdersFn,
+  GetPairsFn,
+  GetQuoteFn,
+  GetTradesFn,
+  GetTransactionFn,
+  NexoProClient,
+  NexoProClientOptions,
+  PlaceAdvancedOrderFn,
+  PlaceFututuresOrderFn,
+  PlaceOrderFn,
+  PlaceTWAPOrderFn,
+  PlaceTriggerOrderFn,
 } from './types/client';
 import { getSignature } from './utils/rest';
 
 type GenericAPIResponse<T = any> = Promise<T>;
 
-const Client = ({ api_key, api_secret }: RestClientOptions) => {
+const Client = ({
+  api_key,
+  api_secret,
+}: NexoProClientOptions): NexoProClient => {
   const baseUrl: string = BASE_URL_VERSION_API_V1;
   const requestConfigDefault: AxiosRequestConfig = {
     timeout: 1000 * 60 * 5,
@@ -103,85 +96,67 @@ const Client = ({ api_key, api_secret }: RestClientOptions) => {
     return call('DELETE', endpoint, params);
   };
 
-  const getAccountSummary = (): Promise<AccountSummaryResponse> => {
+  const getAccountSummary: GetAccountSummaryFn = () => {
     return get('accountSummary');
   };
 
-  const getPairs = (): Promise<PairsResponse> => {
+  const getPairs: GetPairsFn = () => {
     return get('pairs');
   };
 
-  const getQuote = (params: QuoteParams): Promise<QuoteResponse> => {
+  const getQuote: GetQuoteFn = (params) => {
     return get('quote', params);
   };
 
-  const placeOrder = (params: OrderParams): Promise<OrderResponse> => {
+  const placeOrder: PlaceOrderFn = (params) => {
     return post('orders', params);
   };
 
-  const cancelOrder = (
-    params: CancelOrderParams
-  ): Promise<CancelOrderResponse> => {
+  const cancelOrder: CancelOrderFn = (params) => {
     return post('orders/cancel', params);
   };
 
-  const cancelAllOrders = (
-    params: CancelAllOrdersParams
-  ): Promise<CancelAllOrdersResponse> => {
+  const cancelAllOrders: CancelAllOrdersFn = (params) => {
     return post('orders/cancel/all', params);
   };
 
-  const placeTriggerOrder = (
-    params: TriggerOrderParams
-  ): Promise<TriggerOrderResponse> => {
+  const placeTriggerOrder: PlaceTriggerOrderFn = (params) => {
     return post('orders/trigger', params);
   };
 
-  const placeAdvancedOrder = (
-    params: TriggerOrderParams
-  ): Promise<TriggerOrderResponse> => {
+  const placeAdvancedOrder: PlaceAdvancedOrderFn = (params) => {
     return post('orders/advanced', params);
   };
 
-  const placeTWAPOrder = (
-    params: TWAPOrderParams
-  ): Promise<TWAPOrderResponse> => {
+  const placeTWAPOrder: PlaceTWAPOrderFn = (params) => {
     return post('orders/twap', params);
   };
 
-  const getOrders = (params: OrdersParams): Promise<OrdersResponse> => {
+  const getOrders: GetOrdersFn = (params) => {
     return get('orders', params);
   };
 
-  const getOrderDetails = (
-    params: SpecificOrderParams
-  ): Promise<SpecificOrderResponse> => {
+  const getOrderDetails: GetOrderDetailsFn = (params) => {
     return get('orderDetails', params);
   };
 
-  const getTrades = (params: TradesParams): Promise<TradesResponse> => {
+  const getTrades: GetTradesFn = (params) => {
     return get('trades', params);
   };
 
-  const getTransaction = (
-    params: TransactionParams
-  ): Promise<TransactionResponse> => {
+  const getTransaction: GetTransactionFn = (params) => {
     return get('transaction', params);
   };
 
-  const getFuturesInstruments = (): Promise<FuturesInstrumentsResponse> => {
+  const getFuturesInstruments: GetFuturesInstrumentsFn = () => {
     return get('futures/instruments');
   };
 
-  const getFuturesPosition = (
-    params: FuturesPositionsParams
-  ): Promise<FuturesPositionResponse> => {
+  const getFuturesPosition: GetFuturesPositionFn = (params) => {
     return get('futures/positions', params);
   };
 
-  const placeFuturesOrder = (
-    params: FuturesOrderParams
-  ): Promise<FuturesOrderResponse> => {
+  const placeFuturesOrder: PlaceFututuresOrderFn = (params) => {
     return post('futures/order', params);
   };
 
