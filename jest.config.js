@@ -12,7 +12,6 @@ module.exports = {
   detectOpenHandles: false,
   moduleDirectories: ['node_modules', 'src', 'test'],
   testMatch: ['**/test/**/*.test.ts?(x)'],
-  testPathIgnorePatterns: ['node_modules/', 'lib/', '.json'],
   coveragePathIgnorePatterns: ['src/index.ts'],
   collectCoverageFrom: ['src/**/*.ts'],
   coverageThreshold: {
