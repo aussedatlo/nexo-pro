@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 import { BASE_URL_VERSION_API_V1 } from './constant/api';
+import { ApiError, HttpError } from './constant/errors';
 import {
   CancelAllOrdersFn,
   CancelOrderFn,
@@ -69,7 +70,19 @@ const Client = ({
       requestConfig.data = params;
     }
 
-    return (await axios(requestConfig)).data;
+    try {
+      return (await axios(requestConfig)).data;
+    } catch (error) {
+      if (!error.response || !error.response.data)
+        throw new Error('undefined error');
+
+      const { errorMessage, errorCode } = error.response.data;
+
+      if (errorMessage && errorCode)
+        throw new ApiError(errorMessage, error.response.status, errorCode);
+
+      throw new HttpError(error.response.data, error.response.status);
+    }
   };
 
   const get = (endpoint: string, params?: any): GenericAPIResponse => {
