@@ -43,7 +43,7 @@ export type PlaceTriggerOrderFn = (
 ) => Promise<TriggerOrderResponse>;
 
 export type PlaceAdvancedOrderFn = (
-  params: TriggerOrderParams
+  params: AdvancedOrderParams
 ) => Promise<TriggerOrderResponse>;
 
 export type PlaceTWAPOrderFn = (
