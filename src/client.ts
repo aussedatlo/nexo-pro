@@ -46,7 +46,7 @@ const Client = ({
     params?: any
   ): Promise<AxiosResponse<any>> => {
     const nonce = Date.now();
-    const { signature } = getSignature({}, api_secret, nonce.toString());
+    const signature = getSignature(api_secret, nonce.toString());
 
     const requestConfig = {
       ...requestConfigDefault,
