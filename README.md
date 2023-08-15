@@ -11,7 +11,6 @@
 [![npm downloads](https://img.shields.io/npm/dt/nexo-pro)][1]
 [![GitHub contributors](https://img.shields.io/github/contributors/aussedatlo/nexo-pro.svg)](https://GitHub.com/aussedatlo/nexo-pro/graphs/contributors/)
 [![last commit](https://img.shields.io/github/last-commit/aussedatlo/nexo-pro)][1]
-[![CodeFactor](https://www.codefactor.io/repository/github/aussedatlo/nexo-pro/badge)](https://www.codefactor.io/repository/github/aussedatlo/nexo-pro)
 
 [1]: https://www.npmjs.com/package/nexo-pro
 
