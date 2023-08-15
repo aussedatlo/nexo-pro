@@ -93,14 +93,6 @@ const Client = ({
     return call('POST', endpoint, params);
   };
 
-  const put = (endpoint: string, params?: any): GenericAPIResponse => {
-    return call('PUT', endpoint, params);
-  };
-
-  const del = (endpoint: string, params?: any): GenericAPIResponse => {
-    return call('DELETE', endpoint, params);
-  };
-
   const getAccountSummary: GetAccountSummaryFn = () => {
     return get('accountSummary');
   };
