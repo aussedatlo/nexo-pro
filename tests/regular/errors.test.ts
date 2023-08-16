@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { config } from 'dotenv';
-import Client from '../src/client';
-import { ApiError, HttpError } from '../src/constant/errors';
+import Client from '../../src/client';
+import { ApiError, HttpError } from '../../src/constant/errors';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.MockedFunction<typeof axios>;

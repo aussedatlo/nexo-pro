@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { config } from 'dotenv';
 import { URLSearchParams } from 'url';
-import Client from '../src/client';
+import Client from '../../src/client';
 import {
   AdvancedOrderParams,
   CancelAllOrdersParams,
@@ -16,7 +16,7 @@ import {
   TradesParams,
   TransactionParams,
   TriggerOrderParams,
-} from '../src/types/client';
+} from '../../src/types/client';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.MockedFunction<typeof axios>;

@@ -1,4 +1,7 @@
 // jest.config.js
+
+require('dotenv').config();
+
 module.exports = {
   rootDir: './',
   globals: {
@@ -11,7 +14,10 @@ module.exports = {
   bail: false, // enable to stop test when an error occur,
   detectOpenHandles: false,
   moduleDirectories: ['node_modules', 'src', 'test'],
-  testMatch: ['**/test/**/*.test.ts?(x)'],
+  testMatch:
+    process.env.APIKEY && process.env.APISECRET
+      ? ['**/tests/**/*.test.ts']
+      : ['**/tests/regular/*.test.ts'],
   coveragePathIgnorePatterns: ['src/index.ts'],
   collectCoverageFrom: ['src/**/*.ts'],
   coverageThreshold: {

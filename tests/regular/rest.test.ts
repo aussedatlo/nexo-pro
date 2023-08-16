@@ -1,4 +1,4 @@
-import { getSignature } from '../src/utils/rest';
+import { getSignature } from '../../src/utils/rest';
 
 const SECRET = 'secret';
 

@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
-import Client from '../src/client';
-import { Instrument, Position } from '../src/types/client';
+import Client from '../../src/client';
+import { Instrument, Position } from '../../src/types/client';
 
 describe('Pairs Endpoint', () => {
   config();
