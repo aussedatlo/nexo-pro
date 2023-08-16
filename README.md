@@ -4,7 +4,7 @@
 
 :point_right: Unofficial Node.js connector for the Nexo Pro APIs, with TypeScript & browser support. :point_left:
 
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/aussedatlo/nexo-pro.svg)](http://isitmaintained.com/project/aussedatlo/nexo-pro 'Percentage of issues still open')
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/aussedatlo/nexo-pro.svg)](http://isitmaintained.com/project/aussedatlo/nexo-pro 'Percentage of issues still open')
 [![GitHub license](https://img.shields.io/github/license/aussedatlo/nexo-pro.svg)](https://github.com/aussedatlo/nexo-pro/blob/master/LICENSE.md)
 [![npm version](https://img.shields.io/npm/v/nexo-pro)][1]
 [![npm size](https://img.shields.io/bundlephobia/min/nexo-pro/latest)][1]
