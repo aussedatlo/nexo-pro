@@ -4,11 +4,11 @@ const SECRET = 'secret';
 
 describe('Rest utils', () => {
   it('should calculate signature correctly', async () => {
-    expect(getSignature(SECRET, new Date(100028998329).toString())).toEqual(
-      'Bmcn7cMMsUXbc1qF+G+DI2ik2Tdv5Sj80cNscMJnM3w='
+    expect(getSignature(SECRET, '100028998329')).toEqual(
+      'Ap/kbdGYLfIxc4SSQTdXHBuJiha+FoQwgWIrRKjRBOk='
     );
-    expect(getSignature(SECRET, new Date(100128998329).toString())).toEqual(
-      'hwVFyOdwQJ2sUoSGZpuc0TLhxhKAo4csxQiHnh8ez+o='
+    expect(getSignature(SECRET, '100028998330')).toEqual(
+      'FoEZ+bqWqp2WCzh7xV8IjW/6kzVhPoOa35hC/lM1Ncc='
     );
   });
 });

@@ -1,0 +1,21 @@
+name: CI
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install dependencies
+        run: yarn install
+      - name: run build
+        run: yarn build && yarn pack
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install dependencies
+        run: yarn install
+      - name: run tests
+        run: node --version && yarn test
+      - name: check badge
+        run: git diff --quiet ./shields/coverage.svg || exit 1
