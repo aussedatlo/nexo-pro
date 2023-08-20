@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
+import axios, { AxiosRequestConfig, Method } from 'axios';
 import { BASE_URL_VERSION_API_V1 } from './constant/api';
 import { ApiError, HttpError } from './constant/errors';
 import {
@@ -23,7 +23,14 @@ import {
 } from './types/client';
 import { getSignature } from './utils/rest';
 
-type GenericAPIResponse<T = any> = Promise<T>;
+type ExtractParams<F> = F extends (
+  params: infer P extends object
+) => Promise<unknown>
+  ? P
+  : never;
+type ExtractResponse<F> = F extends (params: unknown) => Promise<infer R>
+  ? R
+  : never;
 
 const Client = ({
   api_key,
@@ -40,11 +47,11 @@ const Client = ({
     },
   };
 
-  const call = async (
+  const call = async <P extends object, R>(
     method: Method,
     endpoint: string,
-    params?: any
-  ): Promise<AxiosResponse<any>> => {
+    params: P
+  ): Promise<R> => {
     const nonce = Date.now();
     const signature = getSignature(api_secret, nonce.toString());
 
@@ -61,8 +68,8 @@ const Client = ({
     };
 
     if (method === 'GET' || method === 'DELETE') {
-      let p = new URLSearchParams();
-      Object.keys(params || {}).forEach((value: string) => {
+      const p = new URLSearchParams();
+      Object.keys(params).forEach((value: string) => {
         p.append(value, params[value]);
       });
       requestConfig.params = p;
@@ -71,7 +78,8 @@ const Client = ({
     }
 
     try {
-      return (await axios(requestConfig)).data;
+      const { data } = await axios(requestConfig);
+      return data as R;
     } catch (error) {
       if (!error.response || !error.response.data)
         throw new Error('undefined error');
@@ -85,76 +93,76 @@ const Client = ({
     }
   };
 
-  const get = (endpoint: string, params?: any): GenericAPIResponse => {
-    return call('GET', endpoint, params);
+  const get = <F>(endpoint: string, params: ExtractParams<F>) => {
+    return call<ExtractParams<F>, ExtractResponse<F>>('GET', endpoint, params);
   };
 
-  const post = (endpoint: string, params?: any): GenericAPIResponse => {
-    return call('POST', endpoint, params);
+  const post = <F>(endpoint: string, params: ExtractParams<F>) => {
+    return call<ExtractParams<F>, ExtractResponse<F>>('POST', endpoint, params);
   };
 
   const getAccountSummary: GetAccountSummaryFn = () => {
-    return get('accountSummary');
+    return get<GetAccountSummaryFn>('accountSummary', {});
   };
 
   const getPairs: GetPairsFn = () => {
-    return get('pairs');
+    return get<GetPairsFn>('pairs', {});
   };
 
   const getQuote: GetQuoteFn = (params) => {
-    return get('quote', params);
+    return get<GetQuoteFn>('quote', params);
   };
 
   const placeOrder: PlaceOrderFn = (params) => {
-    return post('orders', params);
+    return post<PlaceOrderFn>('orders', params);
   };
 
   const cancelOrder: CancelOrderFn = (params) => {
-    return post('orders/cancel', params);
+    return post<CancelOrderFn>('orders/cancel', params);
   };
 
   const cancelAllOrders: CancelAllOrdersFn = (params) => {
-    return post('orders/cancel/all', params);
+    return post<CancelAllOrdersFn>('orders/cancel/all', params);
   };
 
   const placeTriggerOrder: PlaceTriggerOrderFn = (params) => {
-    return post('orders/trigger', params);
+    return post<PlaceTriggerOrderFn>('orders/trigger', params);
   };
 
   const placeAdvancedOrder: PlaceAdvancedOrderFn = (params) => {
-    return post('orders/advanced', params);
+    return post<PlaceAdvancedOrderFn>('orders/advanced', params);
   };
 
   const placeTWAPOrder: PlaceTWAPOrderFn = (params) => {
-    return post('orders/twap', params);
+    return post<PlaceTWAPOrderFn>('orders/twap', params);
   };
 
   const getOrders: GetOrdersFn = (params) => {
-    return get('orders', params);
+    return get<GetOrdersFn>('orders', params);
   };
 
   const getOrderDetails: GetOrderDetailsFn = (params) => {
-    return get('orderDetails', params);
+    return get<GetOrderDetailsFn>('orderDetails', params);
   };
 
   const getTrades: GetTradesFn = (params) => {
-    return get('trades', params);
+    return get<GetTradesFn>('trades', params);
   };
 
   const getTransaction: GetTransactionFn = (params) => {
-    return get('transaction', params);
+    return get<GetTransactionFn>('transaction', params);
   };
 
   const getFuturesInstruments: GetFuturesInstrumentsFn = () => {
-    return get('futures/instruments');
+    return get<GetFuturesInstrumentsFn>('futures/instruments', {});
   };
 
   const getFuturesPosition: GetFuturesPositionFn = (params) => {
-    return get('futures/positions', params);
+    return get<GetFuturesPositionFn>('futures/positions', params);
   };
 
   const placeFuturesOrder: PlaceFututuresOrderFn = (params) => {
-    return post('futures/order', params);
+    return post<PlaceFututuresOrderFn>('futures/order', params);
   };
 
   return {

@@ -130,13 +130,13 @@ export type CancelOrderParams = {
   orderId: string;
 };
 
-export type CancelOrderResponse = {};
+export type CancelOrderResponse = Record<string, never>;
 
 export type CancelAllOrdersParams = {
   pair: string;
 };
 
-export type CancelAllOrdersResponse = {};
+export type CancelAllOrdersResponse = Record<string, never>;
 
 export type TriggerOrderParams = {
   pair: string;
