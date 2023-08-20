@@ -19,3 +19,11 @@ jobs:
         run: node --version && yarn test
       - name: check badge
         run: git diff --quiet ./shields/coverage.svg || exit 1
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install dependencies
+        run: yarn install
+      - name: run prettier
+        run: yarn prettier
