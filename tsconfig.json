@@ -15,11 +15,12 @@
     "esModuleInterop": true,
     "lib": ["es2021", "dom"],
     "baseUrl": ".",
+    "rootDirs": ["src", "examples", "tests"],
     "paths": {
       "@nexo-pro/*": ["./src/*"]
     },
     "outDir": "lib"
   },
-  "include": ["src/**/*", "tests/**/*", "examples/**/*.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/node_modules/*", "coverage", "doc"]
 }
