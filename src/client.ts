@@ -23,9 +23,9 @@ import {
 } from './types/client';
 import { getSignature } from './utils/rest';
 
-type ExtractParams<F> = F extends (
-  params: infer P extends object
-) => Promise<unknown>
+type ExtractParams<F> = F extends () => Promise<unknown>
+  ? Record<string, never>
+  : F extends (params: infer P) => Promise<unknown>
   ? P
   : never;
 type ExtractResponse<F> = F extends (params: unknown) => Promise<infer R>
@@ -47,7 +47,7 @@ const Client = ({
     },
   };
 
-  const call = async <P extends object, R>(
+  const call = async <P, R>(
     method: Method,
     endpoint: string,
     params: P
@@ -67,7 +67,11 @@ const Client = ({
       json: true,
     };
 
-    if (method === 'GET' || method === 'DELETE') {
+    if (
+      (method === 'GET' || method === 'DELETE') &&
+      typeof params === 'object' &&
+      params
+    ) {
       const p = new URLSearchParams();
       Object.keys(params).forEach((value: string) => {
         p.append(value, params[value]);
