@@ -1,7 +1,7 @@
+import Client from '@nexo-pro/client';
+import { ApiError, HttpError } from '@nexo-pro/constant/errors';
 import axios from 'axios';
 import { config } from 'dotenv';
-import Client from '../../src/client';
-import { ApiError, HttpError } from '../../src/constant/errors';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.MockedFunction<typeof axios>;

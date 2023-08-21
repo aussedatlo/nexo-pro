@@ -1,7 +1,4 @@
-import axios from 'axios';
-import { config } from 'dotenv';
-import { URLSearchParams } from 'url';
-import Client from '../../src/client';
+import Client from '@nexo-pro/client';
 import {
   AdvancedOrderParams,
   CancelAllOrdersParams,
@@ -12,11 +9,14 @@ import {
   OrdersParams,
   QuoteParams,
   SpecificOrderParams,
-  TWAPOrderParams,
   TradesParams,
   TransactionParams,
   TriggerOrderParams,
-} from '../../src/types/client';
+  TWAPOrderParams,
+} from '@nexo-pro/types/client';
+import axios from 'axios';
+import { config } from 'dotenv';
+import { URLSearchParams } from 'url';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.MockedFunction<typeof axios>;

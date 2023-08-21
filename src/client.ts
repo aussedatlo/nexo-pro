@@ -1,6 +1,5 @@
-import axios, { AxiosRequestConfig, Method } from 'axios';
-import { BASE_URL_VERSION_API_V1 } from './constant/api';
-import { ApiError, HttpError } from './constant/errors';
+import { BASE_URL_VERSION_API_V1 } from '@nexo-pro/constant/api';
+import { ApiError, HttpError } from '@nexo-pro/constant/errors';
 import {
   CancelAllOrdersFn,
   CancelOrderFn,
@@ -18,10 +17,11 @@ import {
   PlaceAdvancedOrderFn,
   PlaceFututuresOrderFn,
   PlaceOrderFn,
-  PlaceTWAPOrderFn,
   PlaceTriggerOrderFn,
-} from './types/client';
-import { getSignature } from './utils/rest';
+  PlaceTWAPOrderFn,
+} from '@nexo-pro/types/client';
+import { getSignature } from '@nexo-pro/utils/rest';
+import axios, { AxiosRequestConfig, Method } from 'axios';
 
 type ExtractParams<F> = F extends () => Promise<unknown>
   ? Record<string, never>

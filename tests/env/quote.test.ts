@@ -1,6 +1,6 @@
+import Client from '@nexo-pro/client';
+import { QuoteParams, QuoteResponse } from '@nexo-pro/types/client';
 import { config } from 'dotenv';
-import Client from '../../src/client';
-import { QuoteParams, QuoteResponse } from '../../src/types/client';
 
 describe('Quote Endpoint', () => {
   config();

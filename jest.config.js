@@ -20,6 +20,9 @@ module.exports = {
       : ['**/tests/regular/*.test.ts'],
   coveragePathIgnorePatterns: ['src/index.ts'],
   collectCoverageFrom: ['src/**/*.ts'],
+  moduleNameMapper: {
+    '^@nexo-pro/(.*)$': '<rootDir>/src/$1',
+  },
   coverageThreshold: {
     // coverage strategy
     global: {

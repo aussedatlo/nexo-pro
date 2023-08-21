@@ -1,4 +1,4 @@
-import { getSignature } from '../../src/utils/rest';
+import { getSignature } from '@nexo-pro/utils/rest';
 
 const SECRET = 'secret';
 

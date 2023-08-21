@@ -1,6 +1,6 @@
+import Client from '@nexo-pro/client';
+import { Instrument, Position } from '@nexo-pro/types/client';
 import { config } from 'dotenv';
-import Client from '../../src/client';
-import { Instrument, Position } from '../../src/types/client';
 
 describe('Pairs Endpoint', () => {
   config();
