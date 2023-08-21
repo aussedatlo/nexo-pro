@@ -27,3 +27,11 @@ jobs:
         run: yarn install
       - name: run prettier
         run: yarn prettier
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install dependencies
+        run: yarn install
+      - name: run linter
+        run: yarn lint
