@@ -20,6 +20,6 @@
     },
     "outDir": "lib"
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "include": ["src/**/*", "tests/**/*", "examples/**/*.ts"],
   "exclude": ["node_modules", "**/node_modules/*", "coverage", "doc"]
 }

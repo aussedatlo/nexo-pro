@@ -1,6 +1,6 @@
+import { OrderResponse, OrdersResponse } from '@nexo-pro//types/client';
+import Client from '@nexo-pro/index';
 import { config } from 'dotenv';
-import Client from '../lib/';
-import { OrderResponse, OrdersResponse } from '../lib/types/client';
 
 config();
 const key = process.env.APIKEY || 'APIKEY';
