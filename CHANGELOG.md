@@ -1,5 +1,10 @@
 # Nexo Pro API
 
+## v1.2.2
+
+- minor package.json refactoring
+- remove aliases during build
+
 ## v1.2.1
 
 - fix ts build
