@@ -14,7 +14,6 @@
     "clean": "rimraf lib",
     "build": "tsc && tsc-alias",
     "build:clean": "yarn run clean && yarn run build",
-    "build:watch": "yarn run clean && tsc --watch",
     "pack": "webpack --config webpack/webpack.config.js",
     "prepublishOnly": "yarn run build:clean",
     "betapublish": "yarn publish --tag beta",
